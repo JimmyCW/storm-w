@@ -12,7 +12,7 @@ import org.apache.storm.utils.Utils;
 public class TopologyMain {
     public static void main(String[] args) throws Exception {
         TopologyBuilder builder = new TopologyBuilder();
-        builder.setSpout("word", new org.apache.storm.testing.TestWordSpout(),1 );
+        builder.setSpout("word", new TestWordSpout(),1 );
         builder.setBolt("exclaim", new ExclaimationBolt(), 1).shuffleGrouping("word");
         builder.setBolt("print", new PrintBolt(), 1).shuffleGrouping("exclaim");
         Config config = new Config();
